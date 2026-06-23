@@ -1,0 +1,6 @@
+{
+  "name": "Kathryn Schenk - Properly Properties",
+  "description": "A modern, highly polished web platform for real estate agent Kathryn Schenk (Keller Williams Greater Metropolitan), featuring interactive guides for buyers and sellers, neighborhood snapshots, real-time market trends, and detailed property listings in Northeast Ohio.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
