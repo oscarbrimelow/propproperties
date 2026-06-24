@@ -97,7 +97,7 @@ export const Blog: React.FC = () => {
           {/* Article Banner image */}
           <div className="aspect-21/9 w-full rounded-2xl overflow-hidden border border-neutral-850 shadow-lg bg-neutral-950">
             <img
-              src={activePost.images ? activePost.images[0] : activePost.imgContent || activePost.imgBox || 'https://cdn.lofty.com/image/fs/844771468836588/website/158481/cmsbuild/2026131_159781b348a04292-jpeg.webp'}
+              src={activePost.image || (activePost.images ? activePost.images[0] : activePost.imgContent || activePost.imgBox)}
               alt={activePost.title}
               className="w-full h-full object-cover"
             />
