@@ -73,9 +73,9 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#121212] text-neutral-200 selection:bg-[#a2533e]/35 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#0a0a0a] text-neutral-200 selection:bg-[#a2533e]/35 selection:text-white">
       <Header />
-      <main className="flex-grow pt-24 pb-16">
+      <main className="flex-grow pt-20 pb-16">
         {renderActivePage()}
       </main>
       <Footer />

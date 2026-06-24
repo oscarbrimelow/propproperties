@@ -56,7 +56,7 @@ export const Header: React.FC = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#191919] text-white border-b border-neutral-800 shadow-md">
+    <header className="sticky top-0 z-50 bg-[#121212]/95 backdrop-blur-md text-white border-b border-neutral-850/80 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNav('/')}>

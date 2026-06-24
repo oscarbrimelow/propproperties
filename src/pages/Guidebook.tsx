@@ -14,6 +14,7 @@ export const Guidebook: React.FC = () => {
   const [agree, setAgree] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const guideTitle = isSellerGuide ? 'Northeast Ohio Seller\'s Guide' : 'Northeast Ohio Homebuyer Guidebook';
   const guideDesc = isSellerGuide
@@ -31,15 +32,14 @@ export const Guidebook: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !phone.trim() || !email.trim() || !agree) {
-      alert('Please fill out all fields and accept the disclosures.');
+      setError('Please fill out all fields and accept the disclosures.');
       return;
     }
+    setError('');
     setLoading(true);
     setTimeout(() => {
       setSubmitted(true);
       setLoading(false);
-      // Trigger actual download in new tab
-      window.open(pdfUrl, '_blank');
     }, 1500);
   };
 
@@ -86,7 +86,8 @@ export const Guidebook: React.FC = () => {
         </div>
 
         {/* Right: Registration / Download Form */}
-        <div className="lg:col-span-5 bg-[#191919] border border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+        <div className="lg:col-span-5 glass-card rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden group">
+          <div className="absolute top-0 right-0 -mt-10 -mr-10 w-28 h-28 rounded-full bg-[#a2533e]/5 blur-2xl pointer-events-none group-hover:bg-[#a2533e]/10 transition-colors duration-300" />
           <AnimatePresence mode="wait">
             {!submitted ? (
               <motion.div
@@ -94,7 +95,7 @@ export const Guidebook: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                className="space-y-6"
+                className="space-y-6 relative z-10"
               >
                 <div>
                   <h3 className="text-lg font-bold font-CormorantGaramond-700 text-white uppercase tracking-wider">
@@ -104,6 +105,11 @@ export const Guidebook: React.FC = () => {
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {error && (
+                    <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-semibold">
+                      {error}
+                    </div>
+                  )}
                   <div className="space-y-1">
                     <label className="block text-[10px] uppercase font-bold tracking-wider text-neutral-400">Full Name</label>
                     <input
@@ -154,9 +160,11 @@ export const Guidebook: React.FC = () => {
                     </label>
                   </div>
 
-                  <button
+                  <motion.button
                     type="submit"
-                    className="w-full bg-[#a2533e] hover:bg-[#b86149] disabled:bg-neutral-800 disabled:text-neutral-500 disabled:cursor-not-allowed transition-colors text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                    className="w-full bg-[#a2533e] hover:bg-[#b86149] disabled:bg-neutral-800 disabled:text-neutral-500 disabled:cursor-not-allowed transition-all text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-lg"
                     disabled={loading || !agree}
                   >
                     {loading ? (
@@ -167,7 +175,7 @@ export const Guidebook: React.FC = () => {
                         <FileDown className="h-4 w-4" />
                       </>
                     )}
-                  </button>
+                  </motion.button>
                 </form>
               </motion.div>
             ) : (

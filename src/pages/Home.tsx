@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { HomeValuation } from '../components/HomeValuation';
 import { PropertySearch } from '../components/PropertySearch';
 import { Testimonials } from '../components/Testimonials';
-import { ShieldCheck, Compass, Sparkles, Phone, Mail, Award, CheckCircle } from 'lucide-react';
+import { Phone, Mail, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import luxuryHomeDusk from '../assets/images/luxury_home_dusk_1782304063267.jpg';
 
 export const Home: React.FC = () => {
   const [fullName, setFullName] = useState('');
@@ -22,111 +22,90 @@ export const Home: React.FC = () => {
     setSubmitError('');
     setIsSubmitted(true);
   };
+
   return (
     <div className="space-y-16">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-neutral-950 text-white min-h-[80vh] flex items-center px-4 sm:px-6 lg:px-8 py-20 border-b border-neutral-850">
+      {/* Hero Section - Centered elegant card with dusk background inspired by Reference Image 1 */}
+      <section className="-mt-20 relative overflow-hidden bg-neutral-950 text-neutral-900 min-h-[85vh] sm:min-h-[95vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-36 pb-20 border-b border-neutral-850">
+        {/* Ken Burns background zoom animation */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://cdn.lofty.com/image/fs/844771468836588/website/158481/cmsbuild/2025123_9368b4c94a674a8c-png.webp"
-            alt="Beautiful architectural background"
-            className="w-full h-full object-cover opacity-20 object-center"
+          <motion.img
+            initial={{ scale: 1.06, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.65 }}
+            transition={{ duration: 1.6, ease: "easeOut" }}
+            src={luxuryHomeDusk}
+            alt="Beautiful craftsman estate at dusk"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/80 to-transparent" />
+          {/* Main vertical gradient: fades to dark body color at the bottom */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/30 to-transparent z-10" />
+          {/* Top vertical gradient: fades smoothly from the dark header color to transparent, avoiding any harsh black line */}
+          <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[#121212]/90 via-[#121212]/40 to-transparent z-10" />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#a2533e]/10 text-[#a2533e] border border-[#a2533e]/20 uppercase tracking-widest">
-              <Award className="h-3 w-3" />
-              <span>Keller Williams Greater Metropolitan</span>
-            </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none text-white font-CormorantGaramond-700">
-              Northeast Ohio Real Estate,<br />
-              <span className="text-[#a2533e]">Done Properly.</span>
-            </h1>
-            <p className="text-base sm:text-lg text-neutral-300 max-w-2xl leading-relaxed">
-              I combine hyper-local market snapshots, rigorous detail-oriented contract management, and customized strategic presentation to guide you seamlessly through the buying or selling process. 
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <a
+        {/* Centered White Card with high-end editorial styling */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+          className="relative z-10 max-w-3xl w-full bg-white rounded-2xl p-8 sm:p-14 md:p-16 text-center shadow-2xl border-t-[6px] border-[#a2533e] overflow-hidden"
+        >
+          {/* Subtle elegant card texture */}
+          <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#a2533e_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+          
+          <div className="relative z-10 space-y-6 sm:space-y-8">
+            <div className="space-y-3">
+              <span className="inline-block text-[10px] sm:text-xs font-bold tracking-widest text-[#a2533e] uppercase">
+                Premier Real Estate
+              </span>
+              <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-neutral-900 font-CormorantGaramond-700 leading-none">
+                Kathryn Schenk
+              </h1>
+              <p className="text-sm sm:text-xl text-neutral-700 font-medium tracking-wide">
+                Realtor® <span className="text-[#a2533e]/50 mx-1.5 sm:mx-2">|</span> Keller Williams Greater Metropolitan
+              </p>
+            </div>
+
+            <div className="w-16 h-[1.5px] bg-neutral-200 mx-auto" />
+
+            <div className="space-y-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-sm sm:text-base font-semibold text-neutral-850 tracking-wide font-mono">
+                <a href="tel:+14403609563" className="hover:text-[#a2533e] transition-colors flex items-center gap-1.5">
+                  <Phone className="h-4 w-4 text-[#a2533e]/80" />
+                  <span>440-360-9563</span>
+                </a>
+                <span className="hidden sm:inline text-neutral-300 font-sans">|</span>
+                <a href="mailto:katie@properly-properties.com" className="hover:text-[#a2533e] transition-colors flex items-center gap-1.5">
+                  <Mail className="h-4 w-4 text-[#a2533e]/80" />
+                  <span>katie@properly-properties.com</span>
+                </a>
+              </div>
+              
+              <p className="italic text-neutral-500 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
+                Contact me today to get started on your real estate journey—properly.
+              </p>
+            </div>
+
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <motion.a
                 href="#/contact"
-                className="w-full sm:w-auto text-center bg-[#a2533e] hover:bg-[#b86149] transition-colors py-3.5 px-8 rounded-xl text-sm font-bold tracking-wider uppercase text-white shadow-xl cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full sm:w-auto text-center bg-[#a2533e] hover:bg-[#b86149] transition-all py-4 px-10 rounded-xl text-xs font-bold tracking-widest uppercase text-white shadow-xl shadow-[#a2533e]/15 cursor-pointer"
               >
-                Inquire Now
-              </a>
-              <a
+                Reach out now!
+              </motion.a>
+              <motion.a
                 href="#/homebuyer-guidebook"
-                className="w-full sm:w-auto text-center border border-neutral-700 bg-neutral-950/40 hover:bg-neutral-900 transition-colors py-3.5 px-8 rounded-xl text-sm font-bold tracking-wider uppercase text-neutral-200 cursor-pointer"
+                whileHover={{ scale: 1.02, backgroundColor: "rgba(245, 245, 245, 1)" }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full sm:w-auto text-center border border-neutral-200 bg-neutral-50/50 hover:bg-neutral-100 transition-all py-4 px-10 rounded-xl text-xs font-bold tracking-widest uppercase text-neutral-700 cursor-pointer"
               >
                 Download Guidebook
-              </a>
+              </motion.a>
             </div>
           </div>
-
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="relative rounded-2xl overflow-hidden border border-neutral-800 shadow-2xl max-w-xs">
-              <img
-                src="https://cdn.lofty.com/image/fs/844771468836588/website/158481/cmsbuild/2026131_159781b348a04292-jpeg.webp"
-                alt="Kathryn Schenk - Realtor"
-                className="w-full h-auto object-cover object-center aspect-3/4"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 text-center">
-                <p className="text-white font-bold tracking-wide">Kathryn Schenk</p>
-                <p className="text-xs text-neutral-400">Realtor® | License #2024003445</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Value Prop Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-xs uppercase font-extrabold tracking-widest text-[#a2533e] mb-2">Our Signature Approach</h2>
-          <p className="text-3xl font-extrabold tracking-tight text-white font-CormorantGaramond-700">What To Expect When Working With Katie</p>
-          <p className="text-neutral-500 text-sm mt-3 leading-relaxed">
-            Real estate transactions contain major financial decisions and strict regulations. Here is how I protect your interest from day one to the closing table.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-[#191919] border border-neutral-800 rounded-xl p-8 hover:border-neutral-700 transition-colors">
-            <div className="h-12 w-12 rounded-lg bg-[#a2533e]/10 flex items-center justify-center text-[#a2533e] mb-6">
-              <Compass className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-bold text-white mb-3">Local Insight</h3>
-            <p className="text-neutral-400 text-sm leading-relaxed">
-              Two decades abroad taught me the art of observing people and places—and now I apply that precision hyper-locally. I understand the unique district snap-shots of Cleveland Heights, Shaker Heights, and surrounding suburbs, helping you find value others miss.
-            </p>
-          </div>
-
-          <div className="bg-[#191919] border border-neutral-800 rounded-xl p-8 hover:border-neutral-700 transition-colors">
-            <div className="h-12 w-12 rounded-lg bg-[#a2533e]/10 flex items-center justify-center text-[#a2533e] mb-6">
-              <ShieldCheck className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-bold text-white mb-3">Detail Obsessed</h3>
-            <p className="text-neutral-400 text-sm leading-relaxed">
-              In real estate, there is no such thing as a "standard contract". From statutory disclosures (RPD) and point-of-sale inspections to strict escrow timelines and title clearances, I manage the paper-trail rigorously so you never inherit past defects or financial liens.
-            </p>
-          </div>
-
-          <div className="bg-[#191919] border border-neutral-800 rounded-xl p-8 hover:border-neutral-700 transition-colors">
-            <div className="h-12 w-12 rounded-lg bg-[#a2533e]/10 flex items-center justify-center text-[#a2533e] mb-6">
-              <Sparkles className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-bold text-white mb-3">Strategic Selling</h3>
-            <p className="text-neutral-400 text-sm leading-relaxed">
-              Pricing correctly and presenting your home impeccably determines your "First Weekend Wins". I formulate strategic positioning plans tailored to your property, allowing us to attract multiple competitive offers and keeping you in full negotiating leverage.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Interactive Home Valuation Banner */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <HomeValuation />
+        </motion.div>
       </section>
 
       {/* Property Catalog Section */}
@@ -165,8 +144,9 @@ export const Home: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-8 space-y-4">
-            <h4 className="text-lg font-bold font-CormorantGaramond-700 mb-2">Request an Appointment</h4>
+          <div className="glass-card rounded-2xl p-8 space-y-6 relative overflow-hidden group shadow-2xl">
+            <div className="absolute top-0 right-0 -mt-10 -mr-10 w-32 h-32 rounded-full bg-[#a2533e]/5 blur-2xl pointer-events-none group-hover:bg-[#a2533e]/10 transition-colors duration-300" />
+            <h4 className="text-xl font-bold font-CormorantGaramond-700 text-white leading-tight">Request an Appointment</h4>
             
             <AnimatePresence mode="wait">
               {!isSubmitted ? (
@@ -176,47 +156,49 @@ export const Home: React.FC = () => {
                       {submitError}
                     </div>
                   )}
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input
-                      type="text"
-                      required
-                      placeholder="Full Name*"
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
-                      className="bg-neutral-950 border border-neutral-800 rounded-lg p-3 text-white text-xs focus:outline-none focus:border-[#a2533e] w-full"
-                    />
-                    <input
-                      type="tel"
-                      required
-                      placeholder="Phone Number*"
-                      value={phoneNum}
-                      onChange={(e) => setPhoneNum(e.target.value)}
-                      className="bg-neutral-950 border border-neutral-800 rounded-lg p-3 text-white text-xs focus:outline-none focus:border-[#a2533e] w-full"
-                    />
-                  </div>
-                  <input
-                    type="email"
-                    required
-                    placeholder="Email Address*"
-                    value={emailAddr}
-                    onChange={(e) => setEmailAddr(e.target.value)}
-                    className="w-full bg-neutral-950 border border-neutral-800 rounded-lg p-3 text-white text-xs focus:outline-none focus:border-[#a2533e]"
-                  />
-                  <textarea
-                    placeholder="How can we help? (e.g. Planning to buy in Cleveland Heights, Selling evaluation, etc.)"
-                    rows={3}
-                    value={notes}
-                    onChange={(e) => setNotes(e.target.value)}
-                    className="w-full bg-neutral-950 border border-neutral-800 rounded-lg p-3 text-white text-xs focus:outline-none focus:border-[#a2533e]"
-                  />
-                  <button
-                    type="submit"
-                    className="w-full bg-[#a2533e] hover:bg-[#b86149] transition-colors py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white shadow-lg cursor-pointer"
-                  >
-                    Submit Inquiry
-                  </button>
-                </form>
+ 
+                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                     <input
+                       type="text"
+                       required
+                       placeholder="Full Name*"
+                       value={fullName}
+                       onChange={(e) => setFullName(e.target.value)}
+                       className="bg-neutral-950/80 border border-neutral-800/80 rounded-xl p-3 text-white text-xs focus:outline-none focus:border-[#a2533e] w-full transition-colors"
+                     />
+                     <input
+                       type="tel"
+                       required
+                       placeholder="Phone Number*"
+                       value={phoneNum}
+                       onChange={(e) => setPhoneNum(e.target.value)}
+                       className="bg-neutral-950/80 border border-neutral-800/80 rounded-xl p-3 text-white text-xs focus:outline-none focus:border-[#a2533e] w-full transition-colors"
+                     />
+                   </div>
+                   <input
+                     type="email"
+                     required
+                     placeholder="Email Address*"
+                     value={emailAddr}
+                     onChange={(e) => setEmailAddr(e.target.value)}
+                     className="w-full bg-neutral-950/80 border border-neutral-800/80 rounded-xl p-3 text-white text-xs focus:outline-none focus:border-[#a2533e] transition-colors"
+                   />
+                   <textarea
+                     placeholder="How can we help? (e.g. Planning to buy in Cleveland Heights, Selling evaluation, etc.)"
+                     rows={3}
+                     value={notes}
+                     onChange={(e) => setNotes(e.target.value)}
+                     className="w-full bg-neutral-950/80 border border-neutral-800/80 rounded-xl p-3 text-white text-xs focus:outline-none focus:border-[#a2533e] transition-colors"
+                   />
+                   <motion.button
+                     type="submit"
+                     whileHover={{ scale: 1.01 }}
+                     whileTap={{ scale: 0.99 }}
+                     className="w-full bg-[#a2533e] hover:bg-[#b86149] transition-colors py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white shadow-lg cursor-pointer"
+                   >
+                     Submit Inquiry
+                   </motion.button>
+                 </form>
               ) : (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}

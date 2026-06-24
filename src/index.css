@@ -1,1 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-CormorantGaramond-700: "Cormorant Garamond", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom enhancements for premium visual feel */
+.glass-card {
+  background: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(162, 83, 62, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(162, 83, 62, 0.15);
+}
+
+/* Tabular numbers configuration */
+.tabular-numbers {
+  font-variant-numeric: tabular-nums;
+}
